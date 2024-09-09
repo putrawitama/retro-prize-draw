@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Party Lucky Draw</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- Lottie player library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-top"></div>
+      <div class="header-bottom">
+        <h1 class="shrikhand-regular">Prize Draw</h1>
+      </div>
+    </header>
+    <main>
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="side-images-row">
+          <img src="./logo-2.png" alt="Left Image" class="side-image" />
+          <img src="./logo-3.png" alt="Right Image" class="side-image" />
+        </div>
+        <img src="./logo-1.png" alt="Logo" class="top-image" />
+        <!-- <h1 class="shrikhand-regular">Prize Draw</h1> -->
+        <div id="winner">Upload CSV to Start</div>
+        <input type="file" id="csv-upload" accept=".csv" />
+        <button id="upload-btn">Upload CSV</button>
+        <button id="draw-btn" disabled>Start Draw</button>
+        <div id="lottie"></div>
+        <!-- Lottie animation container -->
+      </div>
+      <div id="background-lottie"></div>
+    </main>
+
+    <footer>
+      <div class="footer-orange"></div>
+      <div class="footer-yellow"></div>
+      <div class="footer-red"></div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
