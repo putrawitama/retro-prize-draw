@@ -3,11 +3,20 @@ let drawnNames = [];
 let isDrawing = false;
 const colors = ['#169497', '#93D2BD', '#AD2424', '#CB6A28', '#EF9C1F', '#0B141A'];
 
+// Audio elements for drum and champion sounds
+const drumAudio = new Audio('./drawing.mp3'); // Path to drum.mp3
+// const championAudio = new Audio('./champion.mp3'); // Path to champion.mp3
+
+// Set volumes
+drumAudio.volume = 0.8; // 100% volume for drum
+
 const uploadBtn = document.getElementById("upload-btn");
 const drawBtn = document.getElementById("draw-btn");
 const winnerDisplay = document.getElementById("winner");
 const csvUpload = document.getElementById("csv-upload");
 const lottieContainer = document.getElementById("lottie");
+const lottieContainer2 = document.getElementById("lottie-2");
+const lottieContainer3 = document.getElementById("lottie-3");
 
 function getRandomColor() {
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -22,6 +31,14 @@ const tapeAnimation = lottie.loadAnimation({
     path: './tape.json' // Replace with your Lottie JSON file path
 });
 
+const tvAnimation = lottie.loadAnimation({
+    container: document.getElementById('background-lottie-2'), // the dom element
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: './tv.json' // Replace with your Lottie JSON file path
+});
+
 // Lottie animation
 const confettiAnimation = lottie.loadAnimation({
     container: lottieContainer, // the DOM element where the animation will be displayed
@@ -32,6 +49,23 @@ const confettiAnimation = lottie.loadAnimation({
     path: "./confettie.json", // Dummy confetti animation, replace with your own
 });
 
+const confettiAnimation2 = lottie.loadAnimation({
+    container: lottieContainer2, // the DOM element where the animation will be displayed
+    renderer: "svg",
+    loop: true,
+    autoplay: false,
+    speed: 1,
+    path: "./confettie-2.json", // Dummy confetti animation, replace with your own
+});
+
+const confettiAnimation3 = lottie.loadAnimation({
+    container: lottieContainer3, // the DOM element where the animation will be displayed
+    renderer: "svg",
+    loop: true,
+    autoplay: false,
+    speed: 1,
+    path: "./confettie-2.json", // Dummy confetti animation, replace with your own
+});
 uploadBtn.addEventListener("click", () => {
     csvUpload.click();
 });
@@ -77,14 +111,21 @@ function startDrawAnimation() {
     isDrawing = true;
     let counter = 0;
     lottieContainer.style.display = "none";
+    lottieContainer2.style.display = "none";
+    lottieContainer3.style.display = "none";
     confettiAnimation.stop();
+    confettiAnimation2.stop();
+    confettiAnimation3.stop();
+    drumAudio.pause();
+    drumAudio.currentTime = 0;
+    drumAudio.play();
     const shuffleInterval = setInterval(() => {
         const randomIndex = Math.floor(Math.random() * names.length);
         winnerDisplay.textContent = names[randomIndex];
         winnerDisplay.style.color = getRandomColor();
         winnerDisplay.classList.add("shuffling");
         counter++;
-        if (counter > 50) {
+        if (counter > 70) {
             clearInterval(shuffleInterval);
             drawWinner();
         }
@@ -105,7 +146,11 @@ function drawWinner() {
 
     // Show confetti animation
     lottieContainer.style.display = "block";
+    lottieContainer2.style.display = "block";
+    lottieContainer3.style.display = "block";
     confettiAnimation.play();
+    confettiAnimation2.play();
+    confettiAnimation3.play();
 
     isDrawing = false;
 

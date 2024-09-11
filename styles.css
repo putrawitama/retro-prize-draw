@@ -1,34 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Shrikhand&display=swap");
 body,
 html {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* font-family: "Courier New", monospace; */
   background-color: #ece1d6;
-  background-image: url("./background.png"); /* Replace with actual background */
-  background-size: auto 512px; /* Set the height to 200px, and auto width */
-  background-repeat: repeat; /* Repeat the background both vertically and horizontally */
-  background-position: top left; /* Start repeating from the top-left corner */
+  background-image: url("./background.png");
+  background-size: auto 512px;
+  background-repeat: repeat;
+  background-position: top left;
   overflow: hidden;
   flex-direction: column;
 }
-body {
-  display: flex;
-  flex-direction: column;
-}
+
 header {
   width: 100%;
-  position: relative;
+  position: absolute;
   z-index: 1;
   top: 0;
 }
 .header-top {
-  height: 20px;
+  height: 10px;
   background-color: #169497; /* Dark blue strip */
 }
 .header-bottom {
@@ -36,7 +31,7 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0px 0;
+  padding: 10px 0; /* Adjusted padding */
 }
 
 main {
@@ -51,13 +46,13 @@ footer {
   width: 100%;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  z-index: 0;
   bottom: 0;
 }
 
 .footer-orange {
-  height: 20px;
+  height: 10px;
   background-color: #ef9c1f;
 }
 
@@ -67,7 +62,7 @@ footer {
 }
 
 .footer-red {
-  height: 120px;
+  height: 100px;
   background-color: #ad2424;
 }
 
@@ -87,28 +82,18 @@ footer {
 }
 
 h1 {
-  font-size: 4rem;
-  /* margin-bottom: 2rem; */
+  font-size: 3rem; /* Adjusted font size */
   color: #ad2424;
-  -webkit-text-stroke: 4px #ef9c1f; /* Create thick black outline */
+  -webkit-text-stroke: 4px #ef9c1f;
 }
 
-/* @keyframes retroGlow {
-  from {
-    text-shadow: 0 0 15px #ff0, 0 0 20px #f0f;
-  }
-  to {
-    text-shadow: 0 0 25px #0ff, 0 0 30px #f0f;
-  }
-} */
-
 #winner {
-  font-family: sans-serif; /* Default sans-serif font */
-  font-weight: bold; /* Makes the font bold */
-  text-transform: uppercase; /* Converts text to uppercase */
-  font-size: 5rem;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 4rem; /* Adjusted font size */
+  margin-top: 3rem; /* Adjusted margins */
+  margin-bottom: 2rem;
   height: 3rem;
   animation: pulse 1s infinite alternate;
 }
@@ -124,19 +109,14 @@ h1 {
 
 #draw-btn {
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Adjusted size */
   background-color: #169497;
   border: none;
   cursor: pointer;
   color: #ece1d6;
   border-radius: 5px;
-  margin-top: 7rem;
+  margin-top: 5rem;
   transition: 0.3s;
-}
-
-#draw-btn:hover {
-  background-color: #cb6a28;
-  /* box-shadow: 0 0 25px #ff69b4; */
 }
 
 #csv-upload {
@@ -145,7 +125,7 @@ h1 {
 
 #upload-btn {
   padding: 1rem 2rem;
-  font-size: 2rem;
+  font-size: 1.5rem; /* Adjusted size */
   background-color: #93d2bd;
   border: none;
   cursor: pointer;
@@ -156,8 +136,7 @@ h1 {
 }
 
 .shuffling {
-  font-size: 5rem;
-  /* color: #ff0; */
+  font-size: 4rem; /* Adjusted size */
   animation: flash 0.1s alternate infinite;
 }
 
@@ -174,11 +153,33 @@ h1 {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Full width of the viewport */
-  height: 100vh; /* Full height of the viewport */
-  z-index: 100; /* Ensure it's above other elements */
-  display: none; /* Initially hidden */
-  pointer-events: none; /* Allow clicks to pass through */
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+  pointer-events: none;
+}
+
+#lottie-2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+  pointer-events: none;
+}
+
+#lottie-3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: none;
+  pointer-events: none;
 }
 
 .shrikhand-regular {
@@ -190,39 +191,42 @@ h1 {
 .top-image {
   display: block;
   margin: 0 auto;
-  width: 700px; /* Adjust the width as needed */
-  height: auto;
-  margin-bottom: 20px; /* Space between image and heading */
+  width: 400px; /* Adjusted image size */
+  margin-bottom: 10px;
 }
 
 .side-images-row {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .side-image {
   width: auto;
-  height: 100px;
-  /* border-radius: 50%; */
-  /* background-color: white; */
-  /* border: 5px solid red; */
+  height: 80px; /* Adjusted image size */
   -webkit-filter: drop-shadow(5px 5px 0 white) drop-shadow(-1px -1px 0 white);
   filter: drop-shadow(5px 5px 0 white) drop-shadow(-1px -1px 0 white);
   object-fit: cover;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
 #background-lottie {
   position: absolute;
-  /* top: 0; */
-  left: 0;
   bottom: 0;
   right: 0;
   width: auto;
-  height: 200px;
+  height: 200px; /* Adjusted to fit resolution */
   z-index: 2;
-  pointer-events: none; /* Prevent interaction */
-  /* opacity: 0.5; Make it semi-transparent if needed */
+  pointer-events: none;
+}
+
+#background-lottie-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 200px; /* Adjusted to fit resolution */
+  z-index: 2;
+  pointer-events: none;
 }
