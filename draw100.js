@@ -51,7 +51,6 @@ drawBtn.addEventListener('click', () => {
     }
 
     displayWinners();
-    confettiAnimation.play();
     generateAndDownloadCSV(drawnNames);
 });
 
