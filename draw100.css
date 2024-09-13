@@ -1,0 +1,170 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  background-color: #ece1d6;
+  background-image: url("./background.png");
+  background-size: auto 512px;
+  background-repeat: repeat;
+  background-position: top left;
+  overflow: hidden;
+  /* flex-direction: column; */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  height: 768px;
+  padding: 20px;
+  z-index: 1;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  max-width: 1536px;
+  height: 600px;
+  /* margin: 20px auto; */
+  border-collapse: collapse;
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 70px;
+  background: rgba(236, 225, 214, 0.5);
+}
+
+td {
+  border: 0px solid #000;
+  padding: 10px;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 250px;
+}
+
+#lottie {
+  margin: 20px;
+}
+
+header {
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+}
+.header-top {
+  height: 10px;
+  background-color: #169497; /* Dark blue strip */
+}
+.header-bottom {
+  background-color: #93d2bd; /* Light blue for title */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0; /* Adjusted padding */
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+}
+
+.footer-orange {
+  height: 10px;
+  background-color: #ef9c1f;
+}
+
+.footer-yellow {
+  height: 30px;
+  background-color: #cb6a28;
+}
+
+.footer-red {
+  height: 45px;
+  background-color: #ad2424;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(236, 225, 214, 0.9);
+}
+
+#draw-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem; /* Adjusted size */
+  background-color: #169497;
+  border: none;
+  cursor: pointer;
+  color: #ece1d6;
+  border-radius: 5px;
+  margin-top: 5rem;
+  transition: 0.3s;
+}
+
+#csv-upload {
+  display: none;
+}
+
+#upload-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem; /* Adjusted size */
+  background-color: #93d2bd;
+  border: none;
+  cursor: pointer;
+  color: #0b141a;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  transition: 0.3s;
+}
+
+.shrikhand-regular {
+  font-family: "Shrikhand", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+  font-size: 2.3rem; /* Adjusted font size */
+  color: #ad2424;
+  -webkit-text-stroke: 2px #ef9c1f;
+}

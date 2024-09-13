@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1536, initial-scale=1.0" />
+    <title>Prize Draw</title>
+    <link rel="stylesheet" href="./draw100.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-top"></div>
+      <div class="header-bottom">
+        <h1 class="shrikhand-regular" style="margin: 0">Giveaway Winners</h1>
+      </div>
+    </header>
+    <main>
+      <div class="overlay"></div>
+      <div class="container">
+        <div id="button-group">
+          <!-- Upload CSV button -->
+          <button id="upload-btn">Upload CSV</button>
+          <input
+            type="file"
+            id="csv-upload"
+            style="display: none"
+            accept=".csv"
+          />
+
+          <!-- Draw button -->
+          <button id="draw-btn" disabled>Draw Winners</button>
+        </div>
+
+        <!-- Table to display winners -->
+        <table id="winner-table" cellspacing="0" cellpadding="0">
+          <!-- Rows and cells will be populated via JavaScript -->
+        </table>
+
+        <!-- Lottie animation container -->
+        <div id="lottie" style="display: none"></div>
+
+        <!-- Download link for CSV -->
+        <a id="download-link" style="display: none">Download Winners CSV</a>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-orange"></div>
+      <div class="footer-yellow"></div>
+      <div class="footer-red"></div>
+    </footer>
+
+    <script src="./draw100.js"></script>
+  </body>
+</html>
