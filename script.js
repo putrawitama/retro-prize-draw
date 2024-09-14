@@ -113,6 +113,7 @@ function startDrawAnimation() {
     lottieContainer.style.display = "none";
     lottieContainer2.style.display = "none";
     lottieContainer3.style.display = "none";
+    drawBtn.style.display = "none";
     confettiAnimation.stop();
     confettiAnimation2.stop();
     confettiAnimation3.stop();
