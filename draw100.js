@@ -1,14 +1,26 @@
 let names = [];
 let drawnNames = [];
-const maxWinners = 80;
-const maxNameLength = 20; // Trim names longer than this
-const columns = 7;
-const rows = 16;
+const totalMainPrizeWinners = 12;
+const totalConsolationPrizeWinners = 64;
+const totalWinners = totalMainPrizeWinners + totalConsolationPrizeWinners; // 76 winners in total
+const maxNameLength = 25; // Trim names longer than this
+const columns = 5;
+const rows = 20;
 const winnerTable = document.getElementById('winner-table');
 const uploadBtn = document.getElementById('upload-btn');
 const drawBtn = document.getElementById('draw-btn');
 const csvUpload = document.getElementById('csv-upload');
-const btnGrop = document.getElementById('button-group');
+const btnGroup = document.getElementById('button-group');
+
+// Lottie animation setup (assuming animation files are available)
+// const confettiAnimation = lottie.loadAnimation({
+//     container: document.getElementById('lottie'),
+//     renderer: 'svg',
+//     loop: true,
+//     autoplay: false,
+//     path: './confetti.json'
+// });
+
 // Click to upload CSV
 uploadBtn.addEventListener('click', () => {
     csvUpload.click();
@@ -37,7 +49,8 @@ function handleFileUpload(event) {
 drawBtn.addEventListener('click', () => {
     drawnNames = []; // Clear previous winners
 
-    for (let i = 0; i < maxWinners; i++) {
+    // Draw main prize winners (HU1 to HU12)
+    for (let i = 0; i < totalMainPrizeWinners; i++) {
         const randomIndex = Math.floor(Math.random() * names.length);
         let winnerName = names[randomIndex];
 
@@ -46,17 +59,34 @@ drawBtn.addEventListener('click', () => {
             winnerName = winnerName.slice(0, maxNameLength) + '...';
         }
 
-        drawnNames.push(winnerName);
+        const prizeCode = `HU${i + 1}`;
+        drawnNames.push({ prizeCode, winnerName });
+        names.splice(randomIndex, 1); // Remove drawn name
+    }
+
+    // Draw consolation prize winners (HH1 to HH64)
+    for (let i = 0; i < totalConsolationPrizeWinners; i++) {
+        const randomIndex = Math.floor(Math.random() * names.length);
+        let winnerName = names[randomIndex];
+
+        // Trim long names
+        if (winnerName.length > maxNameLength) {
+            winnerName = winnerName.slice(0, maxNameLength) + '...';
+        }
+
+        const prizeCode = `HH${i + 1}`;
+        drawnNames.push({ prizeCode, winnerName });
         names.splice(randomIndex, 1); // Remove drawn name
     }
 
     displayWinners();
+    // confettiAnimation.play();
     generateAndDownloadCSV(drawnNames);
+    btnGroup.style.display = 'none';
 });
 
 // Display winners in a 5-column table
 function displayWinners() {
-    btnGrop.style.display = 'none';
     winnerTable.innerHTML = ''; // Clear table
 
     let row;
@@ -66,14 +96,20 @@ function displayWinners() {
         }
 
         const cell = row.insertCell(); // Insert new cell
-        cell.textContent = drawnNames[i]; // Set winner name
+        const prizeCode = drawnNames[i].prizeCode;
+        const winnerName = drawnNames[i].winnerName;
+        cell.textContent = `${prizeCode} ${winnerName}`; // Display prize code and winner name
+        if (prizeCode.startsWith('HU')) {
+            cell.style.backgroundColor = '#EF9C1F'; // Gold color for main prize winners
+            cell.style.color = '#000'; // Text color black for contrast
+        }
     }
 }
 
-// Generate and download CSV of winners
+// Generate and download CSV of winners with prize codes
 function generateAndDownloadCSV(winners) {
-    const csvContent = "data:text/csv;charset=utf-8,"
-        + winners.map(winner => winner).join("\n");
+    const csvContent = "data:text/csv;charset=utf-8,Prize Code,Winner Name\n"
+        + winners.map(winner => `${winner.prizeCode},${winner.winnerName}`).join("\n");
 
     const encodedUri = encodeURI(csvContent);
     const downloadLink = document.getElementById('download-link');
